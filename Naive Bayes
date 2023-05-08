@@ -1,0 +1,39 @@
+# Desarrollo el ejercicio probabilistico propuesto empleando el Naive Bayes_Ismael Albutria 
+#defino probabilidades condicionales segun sintomas del covid
+p_fatiga_given_covid = 0.90
+p_tos_seca_given_covid = 0.70
+p_dificultad_respirar_given_covid = 0.60
+p_dolor_garganta_given_covid = 0.50
+p_dolor_cabeza_given_covid = 0.60
+p_dolor_cuerpo_given_covid = 0.50
+p_escalofrios_given_covid = 0.40
+p_secrecion_nasal_given_covid = 0.20
+p_perdida_sentido_given_covid = 0.50
+p_fiebre_given_covid = 0.80
+p_dolor_pecho_given_covid = 0.30
+
+#defino ocurrencia de casos nuevosde COVID en la poblacion 
+p_covid = 0.05
+
+# Defino los sintomas observados en los individuos 
+sintomas = [ 'fatiga', 'tos seca', 'dificultad para respirar', 'dolor de garganta',
+'dolor de cabeza', 'dolor cuerpo', 'escalofrios', 'secrecion nasal', 'perdida del sentido olfato o gusto',
+'fiebre', 'dolor de pecho']
+
+# Calcular la probabilidad que la poblacion tenga covid-19
+p_sintomas_given_covid = p_fatiga_given_covid * p_tos_seca_given_covid * p_dificultad_respirar_given_covid * \
+p_dolor_garganta_given_covid * p_dolor_cabeza_given_covid * p_dolor_cuerpo_given_covid * \ 
+p_escalofrios_given_covid * p_secrecion_nasal_given_covid * p_perdida_sentido_given_covid * \
+p_fiebre_given_covid * p_dolor_pecho_given_covid
+
+# Asumo que la probabilidad de tener estos sintomas sin tener covid es muy baja  
+
+p_sintomas_given_no_covid = 0.05 ** 11 
+
+p_sintomas = p_sintomas_given_covid * p_covid + p_sintomas_given_no_covid = (1 - p_covid)
+
+p_covid_given_sintomas = p_sintomas_given_covid * p_covid / p_sintomas 
+
+print( f"La probabilidad que el paciente tenga covid-19 dados los sintomas es: {p_covid_given_sintomas}")      
+  
+La probabilidad que el paciente tenga covid dados los sintomas es 0.9999999998295609
